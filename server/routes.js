@@ -1,18 +1,8 @@
 const router = require('express').Router();
-// const github = require('../helpers/github.js');
+const controller = require('./controller.js')
 
-router.post('/repos', function (req, res) {
-  // TODO - your code here!
-  // This route should take the github username provided
-  // and get the repo information from the github API, then
-  // save the repo information in the database
-  res.send(req.body)
-});
+router.post('/repos', controller.repos.post);
 
-router.get('/repos', function (req, res) {
-  res.send()
-  // TODO - your code here!
-  // This route should send back the top 25 repos
-});
+router.get('/repos', controller.repos.get);
 
 module.exports = router
