@@ -1,19 +1,17 @@
 const express = require('express');
 let app = express();
 
+const router = require('./routes.js')
+
+const parser = require('body-parser');
+const morgan = require('morgan');
+
 app.use(express.static(__dirname + '/../client/dist'));
 
-app.post('/repos', function (req, res) {
-  // TODO - your code here!
-  // This route should take the github username provided
-  // and get the repo information from the github API, then
-  // save the repo information in the database
-});
+app.use(morgan('dev'));
+app.use(parser.json());
 
-app.get('/repos', function (req, res) {
-  // TODO - your code here!
-  // This route should send back the top 25 repos
-});
+app.use('/', router)
 
 let port = 1128;
 
