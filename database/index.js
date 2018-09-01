@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 let url = process.env.MONGODB || require('./../config.js').MONGODB;
-mongoose.createConnection(url);
+mongoose.connect(url);
 
 const repoSchema = new mongoose.Schema({
   name: String,
