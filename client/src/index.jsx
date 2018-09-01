@@ -25,9 +25,6 @@ class App extends React.Component {
       contentType: 'application/json',
       success: (data) => {
         this.get();
-      },
-      error: (err) => {
-        console.log(err)
       }
     });
   }
@@ -39,15 +36,7 @@ class App extends React.Component {
       data: {
         limit: 25
       },
-      success: (data) => {
-        console.log(data)
-        this.setState({
-          repos: data
-        });
-      },
-      error: (err) => {
-        console.log(err)
-      }
+      success: data => this.setState({repos: data})
     });
   }
 

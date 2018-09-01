@@ -6,7 +6,7 @@ const controller = {
   repos: { 
     get: (req, res) => {
       query = querystring.parse(req.url.split('?')[1])
-      model.repo.get(query, (data) => res.send(data));
+      model.repo.get(query, data => res.send(data));
     },
     post: (req, res) => {
       getReposByUsername(req.body, (repos) => {

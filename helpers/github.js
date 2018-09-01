@@ -17,7 +17,7 @@ let getReposByUsername = ({ username }, cb) => {
   let data = '';
   request
     .get(options)
-    .on('data', (chunk) => data += chunk)
+    .on('data', chunk => data += chunk)
     .on('end', () => cb(data));
 }
 

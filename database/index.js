@@ -20,9 +20,7 @@ const save = (repo) => {
     url: repo.html_url,
     stars: repo.stargazers_count.toString()
   });
-  input.save((err) => {
-    err && console.log(err) 
-  });
+  input.save(err => err && console.log(err));
 }
 
 const find = ({ limit }, cb) => {
