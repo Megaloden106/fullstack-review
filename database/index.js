@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-let url = process.env.MONGODB || require('./../config.js');
+let url = process.env.MONGODB || require('./../config.js').MONGODB;
 mongoose.createConnection(url);
 
 const repoSchema = new mongoose.Schema({
