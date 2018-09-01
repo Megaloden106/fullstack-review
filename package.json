@@ -6,7 +6,9 @@
   "scripts": {
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js",
-    "start": "npm run react-dev & npm run server-dev"
+    "dev": "npm run react-dev & npm run server-dev",
+    "start": "webpack -d",
+    "heroku-postbuild": "npm run install && npm run start"
   },
   "author": "Beth Johnson",
   "license": "ISC",
