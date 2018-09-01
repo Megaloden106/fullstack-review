@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-mongoose.createConnection('mongodb://localhost/popular-repos');
+let url = process.env.MONGODB || require('./../config.js');
+mongoose.createConnection(url);
 
 const repoSchema = new mongoose.Schema({
   name: String,
