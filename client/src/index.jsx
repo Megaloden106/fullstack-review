@@ -31,9 +31,7 @@ class App extends React.Component {
     $.ajax({
       url: 'http://localhost:1128/repos',
       contentType: 'application/json',
-      data: {
-        limit: 25
-      },
+      data: { limit: 25 },
       success: data => this.setState({repos: data})
     });
   }
