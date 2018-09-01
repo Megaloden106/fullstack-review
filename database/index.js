@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/fetcher');
+mongoose.connect('mongodb://localhost/popular-repos');
 
 const repoSchema = new mongoose.Schema({
   name: String,
@@ -17,7 +17,7 @@ const save = (repo) => {
   let input = new Repo({
     name: repo.owner.login,
     repo: repo.name,
-    url: repo.url,
+    url: repo.html_url,
     stars: repo.stargazers_count.toString()
   });
   input.save((err) => {
