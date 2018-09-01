@@ -23,9 +23,7 @@ class App extends React.Component {
       method: 'POST',
       data: JSON.stringify({username: term}),
       contentType: 'application/json',
-      success: (data) => {
-        this.get();
-      }
+      success: () => this.get()
     });
   }
 
