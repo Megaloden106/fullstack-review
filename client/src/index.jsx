@@ -10,10 +10,13 @@ class App extends React.Component {
     this.state = { 
       repos: []
     }
-
   }
 
-  search (term) {
+  componentDidMount() {
+    this.get();
+  }
+
+  search(term) {
     console.log(`${term} was searched`);
     $.ajax({
       url: 'http://localhost:1128/repos',
@@ -21,9 +24,28 @@ class App extends React.Component {
       data: JSON.stringify({username: term}),
       contentType: 'application/json',
       success: (data) => {
-        console.log(data)
+        this.get();
       },
-      error: (err) =>{
+      error: (err) => {
+        console.log(err)
+      }
+    });
+  }
+
+  get() {
+    $.ajax({
+      url: 'http://localhost:1128/repos',
+      contentType: 'application/json',
+      data: {
+        limit: 25
+      },
+      success: (data) => {
+        console.log(data)
+        this.setState({
+          repos: data
+        });
+      },
+      error: (err) => {
         console.log(err)
       }
     });

@@ -1,21 +1,16 @@
 const { getReposByUsername } = require('../helpers/github.js');
 const model = require('./model.js');
+const querystring = require('querystring')
 
 const controller = {
   repos: { 
     get: (req, res) => {
-      res.send()
-      // TODO - your code here!
-      // This route should send back the top 25 repos
+      query = querystring.parse(req.url.split('?')[1])
+      model.repo.get(query, (data) => res.send(data));
     },
     post: (req, res) => {
-      // TODO - your code here!
-      // This route should take the github username provided
-      // and get the repo information from the github API, then
-      // save the repo information in the database
-      console.log('router:', req.body)
-      getReposByUsername(req.body, (data) => {
-        res.send(data);
+      getReposByUsername(req.body, (repos) => {
+        model.repo.post(JSON.parse(repos), () => res.send('SUCCESS'))
       })
     }
   }
