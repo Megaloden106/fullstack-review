@@ -20,7 +20,7 @@ const save = (repo) => {
     url: repo.html_url,
     stars: repo.stargazers_count.toString()
   });
-  input.save(err => !err.message.includes('duplicate') && console.log(err.message));
+  input.save(err => err && !err.message.includes('duplicate') && console.log(err.message));
 }
 
 const find = ({ limit }, cb) => {
