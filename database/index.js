@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/popular-repos');
+mongoose.createConnection('mongodb://localhost/popular-repos');
 
 const repoSchema = new mongoose.Schema({
   name: String,
